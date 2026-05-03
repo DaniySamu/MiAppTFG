@@ -1,4 +1,4 @@
-package com.example.myapptfg.ui.screens
+package com.example.myapptfg.presentation.auth
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -14,6 +14,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.myapptfg.ui.theme.BackgroundGreen
 import com.example.myapptfg.ui.theme.PrimaryGreen
 import com.example.myapptfg.ui.theme.SecondaryGreen
 
@@ -33,7 +34,7 @@ fun RegisterScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.White)
+            .background(BackgroundGreen)
             .padding(24.dp)
             .verticalScroll(rememberScrollState()),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -52,7 +53,7 @@ fun RegisterScreen(
             Box(contentAlignment = Alignment.Center) {
                 Text(
                     text = "Registro",
-                    color = Color.Black,
+                    color = Color.White,
                     fontSize = 24.sp,
                     fontWeight = FontWeight.Bold
                 )
@@ -71,28 +72,30 @@ fun RegisterScreen(
         Spacer(modifier = Modifier.height(16.dp))
 
         // Checkboxes
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Checkbox(
-                checked = acceptTerms,
-                onCheckedChange = { acceptTerms = it },
-                colors = CheckboxDefaults.colors(checkedColor = PrimaryGreen)
-            )
-            Text(text = "Términos y condiciones", fontSize = 14.sp)
-        }
+        Column(modifier = Modifier.fillMaxWidth()) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Checkbox(
+                    checked = acceptTerms,
+                    onCheckedChange = { acceptTerms = it },
+                    colors = CheckboxDefaults.colors(checkedColor = PrimaryGreen)
+                )
+                Text(text = "Términos y condiciones", fontSize = 14.sp, color = Color.Black)
+            }
 
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Checkbox(
-                checked = acceptPrivacy,
-                onCheckedChange = { acceptPrivacy = it },
-                colors = CheckboxDefaults.colors(checkedColor = PrimaryGreen)
-            )
-            Text(text = "Política de privacidad", fontSize = 14.sp)
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Checkbox(
+                    checked = acceptPrivacy,
+                    onCheckedChange = { acceptPrivacy = it },
+                    colors = CheckboxDefaults.colors(checkedColor = PrimaryGreen)
+                )
+                Text(text = "Política de privacidad", fontSize = 14.sp, color = Color.Black)
+            }
         }
 
         Spacer(modifier = Modifier.height(30.dp))
@@ -100,12 +103,12 @@ fun RegisterScreen(
         Button(
             onClick = onRegisterSuccess,
             modifier = Modifier
-                .width(200.dp)
-                .height(50.dp),
+                .width(220.dp)
+                .height(55.dp),
             colors = ButtonDefaults.buttonColors(containerColor = PrimaryGreen),
-            shape = RoundedCornerShape(25.dp)
+            shape = RoundedCornerShape(28.dp)
         ) {
-            Text("Crear Cuenta", color = Color.White, fontSize = 18.sp)
+            Text("Crear Cuenta", color = Color.White, fontSize = 18.sp, fontWeight = FontWeight.Bold)
         }
         
         Spacer(modifier = Modifier.height(20.dp))
@@ -124,7 +127,9 @@ fun RegisterTextField(
         Text(
             text = label,
             fontSize = 14.sp,
-            color = Color.Gray
+            color = Color.Black,
+            fontWeight = FontWeight.Medium,
+            modifier = Modifier.padding(start = 4.dp)
         )
         TextField(
             value = value,
@@ -133,12 +138,12 @@ fun RegisterTextField(
             visualTransformation = if (isPassword) PasswordVisualTransformation() else androidx.compose.ui.text.input.VisualTransformation.None,
             modifier = Modifier.fillMaxWidth(),
             colors = TextFieldDefaults.colors(
-                unfocusedContainerColor = SecondaryGreen.copy(alpha = 0.3f),
-                focusedContainerColor = SecondaryGreen.copy(alpha = 0.3f),
+                unfocusedContainerColor = Color.White,
+                focusedContainerColor = Color.White,
                 unfocusedIndicatorColor = Color.Transparent,
                 focusedIndicatorColor = Color.Transparent
             ),
-            shape = RoundedCornerShape(8.dp)
+            shape = RoundedCornerShape(12.dp)
         )
     }
 }

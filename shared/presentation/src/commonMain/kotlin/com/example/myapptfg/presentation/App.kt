@@ -1,13 +1,13 @@
-package com.example.myapptfg
+package com.example.myapptfg.presentation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.myapptfg.ui.screens.LoginScreen
+import com.example.myapptfg.presentation.auth.LoginScreen
+import com.example.myapptfg.presentation.auth.RegisterScreen
+import com.example.myapptfg.presentation.auth.SplashScreen
 import com.example.myapptfg.presentation.home.MainScreen
-import com.example.myapptfg.ui.screens.RegisterScreen
-import com.example.myapptfg.ui.screens.SplashScreen
 import com.example.myapptfg.ui.theme.MyAppTheme
 
 @Composable
@@ -52,7 +52,7 @@ fun App() {
             }
             composable("main") {
                 MainScreen(
-                    onMenuClick = { /* Handle Drawer in MainScreen */ },
+                    onMenuClick = { /* Handle Drawer */ },
                     onAddProductClick = { navController.navigate("add_product") },
                     onBackToLogin = {
                         navController.navigate("login") {
@@ -62,7 +62,7 @@ fun App() {
                 )
             }
             composable("add_product") {
-                // To be implemented
+                // Implementación futura
             }
         }
     }
